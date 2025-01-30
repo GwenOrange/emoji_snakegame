@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug snackgame",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/emoji_snackgame",
+            "args": ["4"],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "environment": [
+                {
+                    "name": "TERM",
+                    "value": "xterm-256color"
+                },
+                {
+                    "name": "LANG",
+                    "value": "en_US.UTF-8"
+                },
+                {
+                    "name": "COLORTERM",
+                    "value": "24bit"
+                }
+            ],
+            "preLaunchTask": "DEBUG",
+            "externalConsole": true,
+        }
+    ]
+}

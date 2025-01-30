@@ -1,0 +1,18 @@
+{
+    "recommendations": [
+        "tal7aouy.rainbow-bracket",
+        "shardulm94.trailing-spaces",
+        "richardwillis.vscode-spotless-gradle",
+        "redhat.vscode-xml",
+        "fabianlauer.vs-code-xml-format",
+        "redhat.vscode-yaml",
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cpptools-themes",
+        "aaron-bond.better-comments",
+        "ms-vscode.makefile-tools",
+        "vadimcn.vscode-lldb",
+        "oderwat.indent-rainbow",
+        "ms-vscode.live-server"
+    ]
+}

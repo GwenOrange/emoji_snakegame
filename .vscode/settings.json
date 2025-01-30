@@ -1,0 +1,31 @@
+{
+  "files.associations": {
+    "stdlib.h": "c",
+    "stdio.h": "c",
+    "errno.h": "c",
+    "notcurses.h": "c",
+    "unistd.h": "c",
+    "sdl.h": "c",
+    "stdbool.h": "c",
+    "param.h": "c",
+    "stat.h": "c"
+  },
+  "cmake.ignoreCMakeListsMissing": true,
+  "C_Cpp.files.exclude": {
+    "**/.vscode": true,
+    "**/.vs": true
+  },
+  "C_Cpp.errorSquiggles": "disabled",
+  "explorer.autoReveal": false,
+  "explorer.fileNesting.enabled": false,
+  "explorer.expandSingleFolderWorkspaces": false,
+  "explorer.fileNesting.expand": false,
+  "explorer.compactFolders": false,
+  "chat.commandCenter.enabled": false,
+  "editor.renderWhitespace": "selection",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "debug.terminal.clearBeforeReusing": true,
+  "terminal.explorerKind": "both",
+  "terminal.integrated.detectLocale": "on",
+  "editor.columnSelection": false,
+}
