@@ -129,7 +129,107 @@ clean:
 
 .PHONY: debug
 debug: CFLAGS += -DDEBUG -g
-debug: all
+debug:
+	@# 获取系统语言
+	@LANG=$$(locale | grep "LANG=" | cut -d= -f2 | cut -d. -f1); \
+	case $$LANG in \
+		ru_RU) \
+			echo "Проверка системы..."; \
+			LANG_MSG="Русский язык обнаружен"; \
+			;; \
+		zh_CN) \
+			echo "正在检查系统..."; \
+			LANG_MSG="检测到简体中文"; \
+			;; \
+		zh_TW|zh_HK) \
+			echo "正在檢查系統..."; \
+			LANG_MSG="檢測到繁體中文"; \
+			;; \
+		es_*) \
+			echo "Verificando el sistema..."; \
+			LANG_MSG="Español detectado"; \
+			;; \
+		pt_*) \
+			echo "Verificando o sistema..."; \
+			LANG_MSG="Português detectado"; \
+			;; \
+		*) \
+			echo "Checking system..."; \
+			LANG_MSG="English detected (default)"; \
+			;; \
+	esac; \
+	echo "$$LANG_MSG"
+
+	@# 检查 build/bin 目录是否存在
+	@if [ ! -d "$(BUILD_DIR)/bin" ]; then \
+		LANG=$$(locale | grep "LANG=" | cut -d= -f2 | cut -d. -f1); \
+		case $$LANG in \
+			ru_RU) echo "Ошибка: Каталог $(BUILD_DIR)/bin не существует, создаём...";; \
+			zh_CN) echo "错误: 目录 $(BUILD_DIR)/bin 不存在，自动创建该目录";; \
+			zh_TW|zh_HK) echo "錯誤: 目錄 $(BUILD_DIR)/bin 不存在，自動創建該目錄";; \
+			es_*) echo "Error: El directorio $(BUILD_DIR)/bin no existe, creándolo...";; \
+			pt_*) echo "Erro: O diretório $(BUILD_DIR)/bin não existe, criando...";; \
+			*) echo "Error: Directory $(BUILD_DIR)/bin does not exist, creating...";; \
+		esac; \
+		mkdir -p $(BUILD_DIR)/bin; \
+	fi
+
+	@# 检查目录权限
+	@if [ ! -w "$(BUILD_DIR)/bin" ]; then \
+		LANG=$$(locale | grep "LANG=" | cut -d= -f2 | cut -d. -f1); \
+		case $$LANG in \
+			ru_RU) \
+				echo "Ошибка: Нет прав на запись в каталог $(BUILD_DIR)/bin"; \
+				echo "Выполните: chmod 755 $(BUILD_DIR)/bin";; \
+			zh_CN) \
+				echo "错误: 目录 $(BUILD_DIR)/bin 没有写入权限"; \
+				echo "请执行: chmod 755 $(BUILD_DIR)/bin";; \
+			zh_TW|zh_HK) \
+				echo "錯誤: 目錄 $(BUILD_DIR)/bin 沒有寫入權限"; \
+				echo "請執行: chmod 755 $(BUILD_DIR)/bin";; \
+			es_*) \
+				echo "Error: No hay permisos de escritura en $(BUILD_DIR)/bin"; \
+				echo "Ejecute: chmod 755 $(BUILD_DIR)/bin";; \
+			pt_*) \
+				echo "Erro: Sem permissão de escrita em $(BUILD_DIR)/bin"; \
+				echo "Execute: chmod 755 $(BUILD_DIR)/bin";; \
+			*) \
+				echo "Error: No write permission for directory $(BUILD_DIR)/bin"; \
+				echo "Please run: chmod 755 $(BUILD_DIR)/bin";; \
+		esac; \
+		exit 1; \
+	fi
+
+	@# 检查目录所有者
+	@CURRENT_USER=$$(whoami); \
+	DIR_OWNER=$$(ls -ld "$(BUILD_DIR)/bin" | awk '{print $$3}'); \
+	if [ "$$CURRENT_USER" != "$$DIR_OWNER" ]; then \
+		LANG=$$(locale | grep "LANG=" | cut -d= -f2 | cut -d. -f1); \
+		case $$LANG in \
+			ru_RU) \
+				echo "Ошибка: Каталог $(BUILD_DIR)/bin не принадлежит текущему пользователю $$CURRENT_USER"; \
+				echo "Выполните: sudo chown $$CURRENT_USER:$$CURRENT_USER $(BUILD_DIR)/bin";; \
+			zh_CN) \
+				echo "错误: 目录 $(BUILD_DIR)/bin 不属于当前用户 $$CURRENT_USER"; \
+				echo "请执行: sudo chown $$CURRENT_USER:$$CURRENT_USER $(BUILD_DIR)/bin";; \
+			zh_TW|zh_HK) \
+				echo "錯誤: 目錄 $(BUILD_DIR)/bin 不屬於當前用戶 $$CURRENT_USER"; \
+				echo "請執行: sudo chown $$CURRENT_USER:$$CURRENT_USER $(BUILD_DIR)/bin";; \
+			es_*) \
+				echo "Error: El directorio $(BUILD_DIR)/bin no pertenece al usuario actual $$CURRENT_USER"; \
+				echo "Ejecute: sudo chown $$CURRENT_USER:$$CURRENT_USER $(BUILD_DIR)/bin";; \
+			pt_*) \
+				echo "Erro: O diretório $(BUILD_DIR)/bin não pertence ao usuário atual $$CURRENT_USER"; \
+				echo "Execute: sudo chown $$CURRENT_USER:$$CURRENT_USER $(BUILD_DIR)/bin";; \
+			*) \
+				echo "Error: Directory $(BUILD_DIR)/bin is not owned by current user $$CURRENT_USER"; \
+				echo "Please run: sudo chown $$CURRENT_USER:$$CURRENT_USER $(BUILD_DIR)/bin";; \
+		esac; \
+		exit 1; \
+	fi
+
+	$(CC) $(CFLAGS) $(SRC_DIR)/*.c -o $(BUILD_DIR)/bin/emoji_snakegame $(LDFLAGS_BASE)
+
 
 .PHONY: check-install
 check-install:
