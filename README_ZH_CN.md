@@ -219,7 +219,7 @@ gcc test.c -o test \
 | 终端环境        | 支持状态 | 特殊置                                                                 |
 | --------------- | -------- | ---------------------------------------------------------------------- |
 | **Kitty**       | ✅ 最佳   | 显卡加速终端，你必须手动启用防抖动，如`SnakeInputDebounceControl`函数  |
-| VSCode 内置终端 | ❌ 不兼容 | 1.85.3及以上版本 ，notcurses不兼容; 1.85.2及以下版本 ，notcurses不兼容 |
+| VSCode 内置终端 | ❌ 不兼容 | 1.85.3及以上版本  |
 
 [更多](https://github.com/dankamongmen/notcurses/blob/master/TERMINALS.md)
 

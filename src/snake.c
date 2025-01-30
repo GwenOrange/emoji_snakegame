@@ -2870,6 +2870,7 @@ static void *updateSnakeState(void *arg)
                 {
                     state->snakeGameState.Snake.length += 2;
                     state->snakeGameState.Snake.score += 2;
+                    snakeGenerateItemFood(state, state->snakeGameState.Level_Item.FoodCount, 0b11);
                 }
                 else
                 {

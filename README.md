@@ -211,7 +211,7 @@ gcc test.c -o test \
 | Terminal Environment    | Support Status | Special Note                                                             |
 | ----------------------- | -------------- | ----------------------------------------------------------------------- |
 | **Kitty**               | ✅ Best        | Graphics accelerated terminal; you must manually enable debounce, such as using `SnakeInputDebounceControl` function. |
-| VSCode Built-in Terminal | ❌ Incompatible | Versions 1.85.3 and above, notcurses is incompatible; versions 1.85.2 and below, notcurses is incompatible. |
+| VSCode Built-in Terminal | ❌ Incompatible | Versions 1.85.3 and above, notcurses is incompatible |
 
 [More](https://github.com/dankamongmen/notcurses/blob/master/TERMINALS.md)
 

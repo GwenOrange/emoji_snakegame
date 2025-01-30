@@ -212,7 +212,7 @@ gcc test.c -o test \
 | 終端環境        | 支持狀態 | 特殊置                                                                |
 | --------------- | -------- | -------------------------------------------------------------------- |
 | **Kitty**       | ✅ 最佳   | 顯卡加速終端，你必須手動啟用防抖動，如 `SnakeInputDebounceControl` 函數 |
-| VSCode 內置終端 | ❌ 不兼容 | 1.85.3 及以上版本，notcurses 不兼容; 1.85.2 及以下版本，notcurses 不兼容 |
+| VSCode 內置終端 | ❌ 不兼容 | 1.85.3 及以上版本，notcurses 不兼容 |
 
 [更多](https://github.com/dankamongmen/notcurses/blob/master/TERMINALS.md)
 

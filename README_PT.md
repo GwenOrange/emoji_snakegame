@@ -209,7 +209,7 @@ gcc test.c -o test \
 | Ambiente de Terminal     | Status de Suporte | Observação Especial                                                       |
 | ------------------------ | ----------------- | ------------------------------------------------------------------------ |
 | **Kitty**                | ✅ Melhor          | Terminal com aceleração gráfica; você deve habilitar debounce manualmente, como usando a função `SnakeInputDebounceControl`. |
-| Terminal Integrado do VSCode | ❌ Incompatível  | Versões 1.85.3 e superiores, notcurses é incompatível; versões 1.85.2 e inferiores, notcurses é incompatível. |
+| Terminal Integrado do VSCode | ❌ Incompatível  | Versões 1.85.3 e superiores, notcurses é incompatível|
 
 [Mais](https://github.com/dankamongmen/notcurses/blob/master/TERMINALS.md)
 
